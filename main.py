@@ -8,9 +8,7 @@ print("""TO INPUT A VALUE, IN THE TIC-TAC-TOE BOARD, REFER TO THE FOLLOWING:
 4 5 6
 7 8 9\n\n""")
 
-
-enmode = input("Which letter are you playing with? (X or O): ")
-usermode = enmode.upper()
+usermode = wincheck.usermode
 pcmode = "X" if usermode == "O" else "O"
 usplace = 0
 compplace = 0
@@ -22,7 +20,7 @@ print("Let's start the game, shall we?")
 while len(vac) != 0:
     print()
     printboard.printboard()
-
+    print()
     while True:
         try:
             usplace = int(input("Where do you want to person your letter (1-9): "))
@@ -50,13 +48,12 @@ while len(vac) != 0:
     wincheck.checklinematch(pcmode)
 
     if len(wincheck.win) == 2:
+        print("\n")
         printboard.printboard()
-        print("GAME OVER")
+        print("Game over!")
         break
-
-    else:
-        if len(vac) == 0:
-            print("\n\n")
-            printboard.printboard()
-            print("IT IS A DRAW!!!")
-            break
+    if len(vac) == 0:
+        print("\n\n")
+        printboard.printboard()
+        print("IT IS A DRAW!!!")
+        break
