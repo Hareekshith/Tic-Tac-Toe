@@ -45,13 +45,18 @@ while len(vac) != 0:
                 break
     
     wincheck.checklinematch(usermode)
-    wincheck.checklinematch(pcmode)
-
     if len(wincheck.win) == 2:
         print("\n")
         printboard.printboard()
         print("Game over!")
         break
+    wincheck.checklinematch(pcmode)
+    if len(wincheck.win) == 2:
+        print("\n")
+        printboard.printboard()
+        print("Game over!")
+        break
+        
     if len(vac) == 0:
         print("\n\n")
         printboard.printboard()
