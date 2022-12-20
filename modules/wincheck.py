@@ -1,7 +1,8 @@
 import random
 from modules.placevalues import top, mid, bot
+table = [top, mid, bot]
 
-win = [0]
+win = 0
 usermode = random.choice(["X", "O"])
 pcmode = "X" if usermode == "O" else "O"
 
@@ -13,27 +14,18 @@ def usorpc(person):
 
 def checklinematch(person):
     global win
-    if top[0] == top[1] == top[2] == person:
-        usorpc(person)
-        return win.append(1)
-    elif mid[0] == mid[1] == mid[2] == person:
-        usorpc(person)
-        return win.append(1)
-    elif bot[0] == bot[1] == bot[2] == person:
-        usorpc(person)
-        return win.append(1)
-    elif top[0] == mid[0] == bot[0] == person:
-        usorpc(person)
-        return win.append(1)
-    elif top[1] == mid[1] == bot[1] == person:
-        usorpc(person)
-        return win.append(1)
-    elif top[2] == mid[2] == bot[2] == person:
-        usorpc(person)
-        return win.append(1)
-    elif top[0] == mid[1] == bot[2] == person:
-        usorpc(person)
-        return win.append(1)
-    elif top[2] == mid[1] == bot[0] == person:
-        usorpc(person)
-        return win.append(1)
+    for i in range(0,3):
+        if table[0][i] == table[1][i] == table[2][i] == person:
+            win += 1
+            usorpc(person)
+            break
+        elif table[i][0] == table[i][1] == table[i][2] == person:
+            win += 1
+            usorpc(person)
+            break
+        elif table[0][2-i] == table[1][1] == table[2][i] == person:
+            win += 1
+            usorpc(person)
+            break
+        else:
+            continue
