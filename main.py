@@ -21,6 +21,7 @@ while len(vac) != 0:
     print()
     printboard.printboard()
     print()
+
     while True:
         try:
             usplace = int(input("Where do you want to person your letter (1-9): "))
@@ -44,21 +45,19 @@ while len(vac) != 0:
             if len(vac) == 0:
                 break
     
+    print()
     wincheck.checklinematch(usermode)
-    if len(wincheck.win) == 2:
-        print("\n")
+    if wincheck.win == 1:
         printboard.printboard()
-        print("Game over!")
         break
+    print()
     wincheck.checklinematch(pcmode)
-    if len(wincheck.win) == 2:
-        print("\n")
+    if wincheck.win == 1:
         printboard.printboard()
-        print("Game over!")
         break
-        
+    
     if len(vac) == 0:
-        print("\n\n")
+        print()
         printboard.printboard()
         print("IT IS A DRAW!!!")
         break
